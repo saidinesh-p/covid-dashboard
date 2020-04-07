@@ -1,0 +1,21 @@
+
+#
+# Build Files
+#
+**/target/
+/out/
+**/*.log
+
+#
+# IntelliJ IDEA Files
+#
+/.idea/
+**/*.iml
+
+#
+# Misc. Files
+#
+**/bin/
+/catalina*
+/target/
+
