@@ -25,28 +25,6 @@ package com.easyway.covid19.model;
 	import java.util.List;
 
 
-	/**
-	 * <p>Java class for Error complex type.
-	 * 
-	 * <p>The following schema fragment specifies the expected content contained within this class.
-	 * 
-	 * <pre>
-	 * &lt;complexType name="Error"&gt;
-	 *   &lt;complexContent&gt;
-	 *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-	 *       &lt;sequence&gt;
-	 *         &lt;element name="Code" type="{}ErrorCodeEnum"/&gt;
-	 *         &lt;element name="Message" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded"/&gt;
-	 *         &lt;element name="TransactionId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
-	 *         &lt;element name="Timestamp" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
-	 *       &lt;/sequence&gt;
-	 *     &lt;/restriction&gt;
-	 *   &lt;/complexContent&gt;
-	 * &lt;/complexType&gt;
-	 * </pre>
-	 * 
-	 * 
-	 */
 	@XmlAccessorType(XmlAccessType.FIELD)
 	@XmlType(name = "Error", propOrder = {
 	    "code",
@@ -68,52 +46,14 @@ package com.easyway.covid19.model;
 	    @XmlElement(name = "Timestamp")
 	    protected long timestamp;
 
-	    /**
-	     * Gets the value of the code property.
-	     * 
-	     * @return
-	     *     possible object is
-	     *     {@link ErrorCodeEnum }
-	     *     
-	     */
 	    public ErrorCodeEnum getCode() {
 	        return code;
 	    }
 
-	    /**
-	     * Sets the value of the code property.
-	     * 
-	     * @param value
-	     *     allowed object is
-	     *     {@link ErrorCodeEnum }
-	     *     
-	     */
 	    public void setCode(ErrorCodeEnum value) {
 	        this.code = value;
 	    }
 
-	    /**
-	     * Gets the value of the message property.
-	     * 
-	     * <p>
-	     * This accessor method returns a reference to the live list,
-	     * not a snapshot. Therefore any modification you make to the
-	     * returned list will be present inside the JAXB object.
-	     * This is why there is not a <CODE>set</CODE> method for the message property.
-	     * 
-	     * <p>
-	     * For example, to add a new item, do as follows:
-	     * <pre>
-	     *    getMessage().add(newItem);
-	     * </pre>
-	     * 
-	     * 
-	     * <p>
-	     * Objects of the following type(s) are allowed in the list
-	     * {@link String }
-	     * 
-	     * 
-	     */
 	    public List<String> getMessage() {
 	        if (message == null) {
 	            message = new ArrayList<String>();
@@ -121,42 +61,19 @@ package com.easyway.covid19.model;
 	        return this.message;
 	    }
 
-	    /**
-	     * Gets the value of the transactionId property.
-	     * 
-	     * @return
-	     *     possible object is
-	     *     {@link String }
-	     *     
-	     */
 	    public String getTransactionId() {
 	        return transactionId;
 	    }
 
-	    /**
-	     * Sets the value of the transactionId property.
-	     * 
-	     * @param value
-	     *     allowed object is
-	     *     {@link String }
-	     *     
-	     */
+
 	    public void setTransactionId(String value) {
 	        this.transactionId = value;
 	    }
 
-	    /**
-	     * Gets the value of the timestamp property.
-	     * 
-	     */
 	    public long getTimestamp() {
 	        return timestamp;
 	    }
 
-	    /**
-	     * Sets the value of the timestamp property.
-	     * 
-	     */
 	    public void setTimestamp(long value) {
 	        this.timestamp = value;
 	    }

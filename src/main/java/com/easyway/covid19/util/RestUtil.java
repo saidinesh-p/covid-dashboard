@@ -40,27 +40,6 @@ public class RestUtil {
     public static String[] RESPONSE_HEADERS = { "etag", "cache-control",
             "last-modified" };
 
-    /**
-     * Process cache response.
-     *
-     * @param message
-     *            the message
-     * @return the response
-     */
-    public static Response processCacheResponse(Message message) {
-
-        return Response.status(304).entity(message).build();
-    }
-
-    /**
-     * Process response.
-     *
-     * @param message
-     *            the message
-     * @param headers
-     *            the headers
-     * @return the response
-     */
     public static Response processResponse(Message message,
                                            Map<String, String> headers) {
 

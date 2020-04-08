@@ -50,10 +50,5 @@ public class ServiceHelper {
         recordsObject.setDeaths(records.getDeaths());
         return recordsObject;
     }
-
-    /*public Map<String, String,String,String,String> buildRecordsMap(Records records) {
-        Map<String, String, String, String, String> recordsMap = new HashMap<>();
-        recordsMap.put(records.getId().toString(),records.getState(),records.getTotal().toString(),records.getActive().toString(),records.getRecovered().toString(),records.getDeaths().toString());
-        return recordsMap;
-    }*/
+    
 }
