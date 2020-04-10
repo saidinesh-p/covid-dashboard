@@ -20,11 +20,11 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.easyway.covid19.util.RestUtil.processErrorResponse;
-import static com.easyway.covid19.util.RestUtil.processErrorResponseCode;
+import static com.easyway.covid19.util.RestUtil.*;
 
 @Path("/jpa")
 public class Covid19Rest {
@@ -114,11 +114,11 @@ public class Covid19Rest {
     @Path("/addRecordsDetails")
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
-    public Response addRecordsDetails(List<Records> recordsList) {
+    public Response addRecordsDetails(String recordsInfo) {
         try {
-            System.out.println("#####recordsObjectList size###" + recordsList);
-            if (CollectionUtils.isNotEmpty(recordsList)) {
-                return covid19Service.addRecordsDetails(recordsList);
+            System.out.println("#####records recordsInfo###" +recordsInfo);
+            if (StringUtils.isNotEmpty(recordsInfo)) {
+                return covid19Service.addRecordsDetails(recordsInfo);
             } else {
 
                 return processErrorResponseCode(new RecordsResponse(), ErrorCodeEnum.REQUEST_INVALID, Constants.RECORDS_DETAILS_MUST_REQUIRED, LOGGER);

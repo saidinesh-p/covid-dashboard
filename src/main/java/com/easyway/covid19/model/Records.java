@@ -74,4 +74,6 @@ public class Records {
                 ", deaths='" + deaths + '\'' +
                 '}';
     }
+
+
 }

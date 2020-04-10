@@ -10,17 +10,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import java.nio.charset.Charset;
-import java.util.HashMap;
-import java.util.Map;
-
 public class ServiceHelper {
-
-    private static final Charset UTF_8 = Charset.forName("UTF-8");
-
     private static final Log LOGGER = LogFactory.getLog(ServiceHelper.class);
-
-
     public UserSession buildUserSession(User user, String sessionId) throws Exception {
         UserSession userSession = new UserSession();
         userSession.setSessionToken(sessionId);
@@ -29,7 +20,6 @@ public class ServiceHelper {
         userSession.setUserInfoId(user.getId());
         return userSession;
     }
-
     public User buildUser(UserObject userObject) throws Exception {
         User user = new User();
         user.setEmail(StringUtils.isNotBlank(userObject.getEmail()) ? userObject.getEmail() : null);
@@ -39,7 +29,6 @@ public class ServiceHelper {
         user.setPassword(CommonUtil.generateSHA512hash(userObject.getPassword()));
         return user;
     }
-
     public RecordsObject buildRecordsObject(Records records) {
         RecordsObject recordsObject = new RecordsObject();
         recordsObject.setId(records.getId());
@@ -50,5 +39,14 @@ public class ServiceHelper {
         recordsObject.setDeaths(records.getDeaths());
         return recordsObject;
     }
-    
+    public Records buildRecords(RecordsObject recordsObject) throws Exception {
+        Records records = new Records();
+        records.setState(recordsObject.getState());
+        records.setTotal(recordsObject.getTotal());
+        records.setActive(recordsObject.getActive());
+        records.setRecovered(recordsObject.getRecovered());
+        records.setDeaths(recordsObject.getDeaths());
+        return records;
+    }
+
 }

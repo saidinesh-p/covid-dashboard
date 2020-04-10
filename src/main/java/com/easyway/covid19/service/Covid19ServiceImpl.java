@@ -91,7 +91,7 @@ public class Covid19ServiceImpl implements Covid19Service {
     public Response addUserInfo(String userInfo) {
         UserResponse userResponse = new UserResponse();
         try {
-            UserObject userObject = (UserObject) RestUtil.readObject(userInfo, UserObject.class);
+            UserObject userObject = (UserObject) readObject(userInfo, UserObject.class);
             if (StringUtils.isBlank(userObject.getEmail())
                     || StringUtils.isBlank(userObject.getUserName()) || StringUtils.isBlank(userObject.getPassword())) {
                 return processErrorResponseCode(userResponse, ErrorCodeEnum.REQUEST_INVALID,
@@ -141,23 +141,20 @@ public class Covid19ServiceImpl implements Covid19Service {
     }
 
     @Override
-    public Response addRecordsDetails(List<Records> recordsObjectList) {
+    public Response addRecordsDetails(String recordsInfo) throws IOException {
         RecordsResponse recordsResponse = new RecordsResponse();
-        String s = String.valueOf(recordsObjectList.get(0));
-        System.out.println("!!!!!!!!!"+s);
+        RecordsObject recordsObject = (RecordsObject) readObject(recordsInfo, RecordsObject.class);
+
         boolean isAdded = false;
-        if (StringUtils.isBlank(s)){
+        try {
+        if (StringUtils.isBlank(recordsObject.getState())){
             return processErrorResponseCode(recordsResponse, ErrorCodeEnum.REQUEST_INVALID,
                     Constants.REQUIRED_FIELD_NOT_NULL, LOGGER);
         }
+            Records records = serviceHelper.buildRecords(recordsObject);
+            recordsDao.addRecordDetails(records);
 
-        try {
 
-            for (Records records : recordsObjectList) {
-
-                recordsDao.addRecordDetails(records);
-                isAdded = true;
-            }
             recordsResponse.setCode(StatusCodeEnum.OK);
             recordsResponse.setResult(true);
             recordsResponse.setDescription("Successfully added the Record details");
@@ -183,7 +180,7 @@ public class Covid19ServiceImpl implements Covid19Service {
     public Response updateRecordsDetailsByState(String recordsString) {
         RecordsResponse recordsResponse = new RecordsResponse();
         try {
-            Records records = (Records) RestUtil.readObject(recordsString, Records.class);
+            Records records = (Records) readObject(recordsString, Records.class);
 
             recordsDao.updateRecordDetailsByState(records);
             recordsResponse.setCode(StatusCodeEnum.OK);

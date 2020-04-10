@@ -3,6 +3,7 @@ package com.easyway.covid19.service;
 import com.easyway.covid19.model.Records;
 
 import javax.ws.rs.core.Response;
+import java.io.IOException;
 import java.util.List;
 
 public interface Covid19Service {
@@ -12,7 +13,7 @@ public interface Covid19Service {
 
     Response logout(String userSessionToken);
 
-    Response addRecordsDetails(List<Records> recordssObjectList);
+    Response addRecordsDetails(String recordsInfo) throws IOException;
 
     Response updateRecordsDetailsByState(String recordsString);
 
